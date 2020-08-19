@@ -19,7 +19,7 @@ public class MircoServiceApiGatewayApplication {
 	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
 		return builder.routes().route(r -> r.path("/note/**").uri("lb://MICRO-NOTE").id("micro-note"))
 				.route(r -> r.path("/patient/**").uri("lb://MICRO-PATIENT").id("micro-patient"))
-				.route(r -> r.path("/rapport/**").uri("lb://MICRO-RAPPORT").id("micro-rapport")).build();
+				.route(r -> r.path("/rapport/**").uri("lb://MICRO-RAPPORT").id("micro-rapport")).build();//
 	}
 
 }
