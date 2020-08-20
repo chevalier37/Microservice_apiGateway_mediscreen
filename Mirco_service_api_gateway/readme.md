@@ -1,11 +1,7 @@
-## Api Gateway
+# Api Gateway
+> Point d'entrée unique de l'application
 
-Point d'entrée unique de l'application
-
-Port d'écoute : 8080
-
-# Project Name
-> Here goes your awesome project description!
+> Port d'écoute : 8080
 
 ## Table of contents
 * [General info](#general-info)
@@ -18,36 +14,34 @@ Port d'écoute : 8080
 * [Contact](#contact)
 
 ## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+Le fichier Docker Compose se trouve dans ce microservice.
 
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Java
+
 
 ## Setup
-Describe how to install / setup your local environement / add link to demo version.
+Eureka se trouve sur le port 9102
 
 ## Code Examples
-Show examples of usage:
-`put-your-code-here`
+Pour lancer le fichier docker-compose.yml faire :
+`docker-compose up`
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+Liste des endpoints disponibles :
+* Voir la page pour ajouter un patient -> GET : /patient/add
+* Ajouter un patient -> POST : /patient/validate
+* Voir la liste de tous les patients -> GET : /patient/list
+* Voir la page pour modifier un patient -> GET : /patient/update/{patientId}
+* Modifier un patient -> POST : /patient/update/{patientId}
+* Voir les informations d'un patient -> GET : /patient/{patientId}
+* Voir la liste des note d'un patient -> GET : /patient/note/{patientId}
+* Voir la page pour ajouter une note à un patient -> GET : /patient/addNotes/{patientId}
+* Ajouter une note à un patient -> POST : /patient/addNotes/{patientId}
+* Voir la page pour mettre à jour une note -> GET : /patient/updateNote/{idNote}/{patientId}}
+* Mettre à jour une note -> POST : /patient/updateNote/{idNote}
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Project is: _finished_
 
-## Inspiration
-Add here credits. Project inspired by..., based on...
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
