@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  mysql-docker-container:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mediscreen'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'Rocky159'
+      MYSQL_ROOT_PASSWORD: 'Rocky159'
+    ports:
+      - 3306:3306
+    volumes:
+      - /data/mysql
+
+  discovery:
+    image: micro-eureka
+    ports:
+      - 9102:9102
+
+  api-gateway:
+    image: micro-api_gateway
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:9102/
+    links:
+      - discovery
+    depends_on:
+      - discovery
+    ports:
+      - 8080:8080
+
+  micro-patient:
+    image: micro-patient
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:9102/
+    links:
+      - discovery
+    depends_on:
+      - discovery
+      - mysql-docker-container
+    ports:
+      - 9001:9001
+
+  micro-rapport:
+    image: micro-rapport
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:9102/
+    links:
+      - discovery
+    depends_on:
+      - discovery
+    ports:
+      - 9003:9003
+
+  micro-note:
+    image: micro-note
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:9102/
+    links:
+      - discovery
+    depends_on:
+      - discovery
+    ports:
+      - 9002:9002
+
+
